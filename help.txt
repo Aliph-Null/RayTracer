@@ -1,0 +1,64 @@
+The program Ray Tracer by Bodrug Denis:
+-> uses 3 files
+    ->config.txt
+    ->camera.txt
+    ->scene.scene
+
+"config.txt" is read from the same folder as the .exe program OR you can drag and drop the file onto the .exe program. This way the program will read the other files from the new location, output the image to that location and 'config.txt' can have any other name.
+
+"config.txt" contains:
+aspect_ratio = 1.777777778
+image_width = 1920
+max_color = 255
+samples_per_pixel = 2048
+max_depth = 64
+
+camera_configuration = camera_demo.txt
+scene_name = demo.scene
+
+LIVE_WINDOW_RENDER = 0
+CONSOLE_DEBUG = 0
+
+Where the basic image properties are defined, as well as the camera configuration file and scene file.
+
+Note: scene_name has a special configuration:
+scene_name = preloaded [preloaded scene]
+where [preloaded scene] are scene hard written into the program, these are:
+
+*random_scene*
+*random_scene_withMovingSpheres*
+*two_spheres*
+
+"camera.txt" can have any name if it is said in "config.txt" in the same directory, it contains:
+# Camera settings
+cam_position = 13 2 3
+objective_position = 0 0.5 0
+rotation = 0 1 0
+vertical_angle = 20
+aperture = 0.1
+focus_distance = 10
+time_start = 0
+time_end = 0
+
+And Lastly scene.scene, or any file defined in the configuration
+Every object is defined on a separate line, following this structure:
+Object (currently only "sphere") "position" with x, y, z doubles, "radius" with double r, "material" with these possibilities:
+
+*lambertian_checkers*
+*dielectric*
+*normal*
+*metal*
+*lambertian_color*
+
+and their properties, being colors (r, g, b), index of refraction (for dielectric (glass) materials) or other material properties defined and shown alongside their name (above).
+
+[Object] position [x] [y] [z] radius [r] material [material] [r] [g] [b] || [r2] [g2] [b2] || [custom material property]
+
+example:
+sphere position 0 -1000 0 radius 1000 material lambertian_checkers 0.4 0.4 0.5 0.9 0.9 0.9
+sphere position 0 1 0 radius 1 material dielectric 1.5
+sphere position -4 1 0 radius 1 material normal 0.1 0.1 0.1
+sphere position 4 1 0 radius 1 material metal 0.7 0.7 0.70
+sphere position -10.1731 0.2 -3.99209 radius 0.2 material lambertian_color 0.427085 0.228567 0.190677
+
+For more info refer to: https://aliph-null.github.io/
